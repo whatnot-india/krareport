@@ -1,128 +1,128 @@
-let data={};
+let data = {};
 
-const container=
-document.getElementById(
-"works"
-);
+const container =
+    document.getElementById(
+        "works"
+    );
 
 fetch(
-"./questions.json"
+    "./questions.json"
 )
 
-.then(
-r=>r.json()
-)
+    .then(
+        r => r.json()
+    )
 
-.then(json=>{
+    .then(json => {
 
-data=json;
+        data = json;
 
-loadDepartments();
+        loadDepartments();
 
-});
+    });
 
-function loadDepartments(){
+function loadDepartments() {
 
-const select=
-document
-.getElementById(
-"department"
-);
+    const select =
+        document
+            .getElementById(
+                "department"
+            );
 
-data.departments
-.forEach(dep=>{
+    data.departments
+        .forEach(dep => {
 
-select.innerHTML+=
+            select.innerHTML +=
 
-`<option>
+                `<option>
 
 ${dep}
 
 </option>`;
 
-});
+        });
 
 }
 
-function showQuestions(){
+function showQuestions() {
 
-if(
-!employee.value
-||
+    if (
+        !employee.value
+        ||
 
-!email.value
-||
+        !email.value
+        ||
 
-!designation.value
-||
+        !designation.value
+        ||
 
-!department.value
-){
+        !department.value
+    ) {
 
-alert(
-"Please complete employee details"
-);
+        alert(
+            "Please complete employee details"
+        );
 
-return;
+        return;
+
+    }
+
+    document
+        .getElementById(
+            "questionSection"
+        )
+        .style.display =
+        "block";
+
+    document
+        .getElementById(
+            "submitBtn"
+        )
+        .style.display =
+        "block";
+
+    document
+        .getElementById(
+            "employeeFeedback"
+        )
+        .style.display =
+        "block";
+
+    loadQuestions();
+
+    window.scrollTo({
+
+        top:
+            document
+                .getElementById(
+                    "questionSection"
+                )
+                .offsetTop,
+
+        behavior:
+            "smooth"
+
+    });
 
 }
 
-document
-.getElementById(
-"questionSection"
-)
-.style.display=
-"block";
+function loadQuestions() {
 
-document
-.getElementById(
-"submitBtn"
-)
-.style.display=
-"block";
+    container.innerHTML = "";
 
-document
-.getElementById(
-"employeeFeedback"
-)
-.style.display=
-"block";
+    const questions =
 
-loadQuestions();
+        data.questions[
+        department.value
+        ]
 
-window.scrollTo({
+        ||
 
-top:
-document
-.getElementById(
-"questionSection"
-)
-.offsetTop,
+        [];
 
-behavior:
-"smooth"
+    questions.forEach(work => {
 
-});
-
-}
-
-function loadQuestions(){
-
-container.innerHTML="";
-
-const questions=
-
-data.questions[
-department.value
-]
-
-||
-
-[];
-
-questions.forEach(work=>{
-
-container.innerHTML+=`
+        container.innerHTML += `
 
 <div class="work">
 
@@ -260,404 +260,404 @@ value="5">
 
 `;
 
-});
+    });
 
 }
 
-function toggle(el){
+function toggle(el) {
 
-el
-.closest(
-".work"
-)
-.querySelector(
-".hidden"
-)
-.style.display=
+    el
+        .closest(
+            ".work"
+        )
+        .querySelector(
+            ".hidden"
+        )
+        .style.display =
 
-el.checked
+        el.checked
 
-?
+            ?
 
-"block"
+            "block"
 
-:
+            :
 
-"none";
+            "none";
 
 }
 
-function submitForm(){
+function submitForm() {
 
     clearErrors();
-    
-    let works=[];
-    
-    let hasError=false;
-    
+
+    let works = [];
+
+    let hasError = false;
+
     document
-    .querySelectorAll(".work")
-    .forEach(w=>{
-    
-    const checked=
-    w.querySelector(
-    'input[type="checkbox"]'
-    );
-    
-    if(!checked.checked)
-    return;
-    
-    const explain=
-    w.querySelector(
-    "textarea"
-    );
-    
-    const time=
-    w.querySelector(
-    "select"
-    );
-    
-    const score=
-    w.querySelector(
-    'input[type="radio"]:checked'
-    );
-    
-    const workName=
-    w.querySelector(
-    "b"
-    ).innerText;
-    
-    let valid=true;
-    
-    if(
-    !explain.value.trim()
-    ){
-    
-    valid=false;
-    
-    showError(
-    explain,
-    "Please explain your work"
-    );
-    
-    liveValidation(
-    explain
-    );
-    
-    }
-    
-    if(
-    !score
-    ){
-    
-    valid=false;
-    
-    showScoreError(
-    w
-    );
-    
-    liveScoreValidation(
-    w
-    );
-    
-    }
-    
-    if(!valid){
-    
-    hasError=true;
-    
-    return;
-    
-    }
-    
-    works.push({
-    
-    name:
-    workName,
-    
-    explain:
-    explain.value.trim(),
-    
-    time:
-    time.value,
-    
-    score:
-    score.value
-    
-    });
-    
-    });
-    
+        .querySelectorAll(".work")
+        .forEach(w => {
+
+            const checked =
+                w.querySelector(
+                    'input[type="checkbox"]'
+                );
+
+            if (!checked.checked)
+                return;
+
+            const explain =
+                w.querySelector(
+                    "textarea"
+                );
+
+            const time =
+                w.querySelector(
+                    "select"
+                );
+
+            const score =
+                w.querySelector(
+                    'input[type="radio"]:checked'
+                );
+
+            const workName =
+                w.querySelector(
+                    "b"
+                ).innerText;
+
+            let valid = true;
+
+            if (
+                !explain.value.trim()
+            ) {
+
+                valid = false;
+
+                showError(
+                    explain,
+                    "Please explain your work"
+                );
+
+                liveValidation(
+                    explain
+                );
+
+            }
+
+            if (
+                !score
+            ) {
+
+                valid = false;
+
+                showScoreError(
+                    w
+                );
+
+                liveScoreValidation(
+                    w
+                );
+
+            }
+
+            if (!valid) {
+
+                hasError = true;
+
+                return;
+
+            }
+
+            works.push({
+
+                name:
+                    workName,
+
+                explain:
+                    explain.value.trim(),
+
+                time:
+                    time.value,
+
+                score:
+                    score.value
+
+            });
+
+        });
+
     /* Additional Details Validation */
 
-const reporting=
+    const reporting =
 
-document.getElementById(
-"reportingTo"
-);
-
-const concerns=
-
-document.getElementById(
-"concerns"
-);
-
-const grooming=
-
-document.getElementById(
-"grooming"
-);
-
-let extraError=false;
-
-if(
-!reporting.value.trim()
-){
-
-showError(
-
-reporting,
-
-"Please mention reporting manager"
-
-);
-
-liveValidation(
-reporting
-);
-
-extraError=true;
-
-}
-
-if(
-!concerns.value.trim()
-){
-
-showError(
-
-concerns,
-
-"Please share concerns or mention NA"
-
-);
-
-liveValidation(
-concerns
-);
-
-extraError=true;
-
-}
-
-if(
-!grooming.value
-){
-
-showError(
-
-grooming,
-
-"Select grooming response"
-
-);
-
-grooming.addEventListener(
-
-"change",
-
-()=>{
-
-grooming.classList.remove(
-"error"
-);
-
-grooming
-.nextElementSibling
-?.remove();
-
-},
-
-{
-
-once:true
-
-}
-
-);
-
-extraError=true;
-
-}
-
-if(
-
-hasError
-||
-
-extraError
-
-){
-
-document
-.querySelector(
-".error"
-)
-?.scrollIntoView({
-
-behavior:
-"smooth",
-
-block:
-"center"
-
-});
-
-return;
-
-}
-    
-    submitToSheet(
-    works
-    );
-    
-    }
-    
-    function submitToSheet(works){
-
-        const submitBtn=
-        
         document.getElementById(
-        "submitBtn"
+            "reportingTo"
         );
-        
-        // prevent double click
-        
-        if(
-        submitBtn.disabled
-        )
+
+    const concerns =
+
+        document.getElementById(
+            "concerns"
+        );
+
+    const grooming =
+
+        document.getElementById(
+            "grooming"
+        );
+
+    let extraError = false;
+
+    if (
+        !reporting.value.trim()
+    ) {
+
+        showError(
+
+            reporting,
+
+            "Please mention reporting manager"
+
+        );
+
+        liveValidation(
+            reporting
+        );
+
+        extraError = true;
+
+    }
+
+    if (
+        !concerns.value.trim()
+    ) {
+
+        showError(
+
+            concerns,
+
+            "Please share concerns or mention NA"
+
+        );
+
+        liveValidation(
+            concerns
+        );
+
+        extraError = true;
+
+    }
+
+    if (
+        !grooming.value
+    ) {
+
+        showError(
+
+            grooming,
+
+            "Select grooming response"
+
+        );
+
+        grooming.addEventListener(
+
+            "change",
+
+            () => {
+
+                grooming.classList.remove(
+                    "error"
+                );
+
+                grooming
+                    .nextElementSibling
+                    ?.remove();
+
+            },
+
+            {
+
+                once: true
+
+            }
+
+        );
+
+        extraError = true;
+
+    }
+
+    if (
+
+        hasError
+        ||
+
+        extraError
+
+    ) {
+
+        document
+            .querySelector(
+                ".error"
+            )
+            ?.scrollIntoView({
+
+                behavior:
+                    "smooth",
+
+                block:
+                    "center"
+
+            });
+
         return;
-        
-        // loading
-        
-        submitBtn.disabled=
+
+    }
+
+    submitToSheet(
+        works
+    );
+
+}
+
+function submitToSheet(works) {
+
+    const submitBtn =
+
+        document.getElementById(
+            "submitBtn"
+        );
+
+    // prevent double click
+
+    if (
+        submitBtn.disabled
+    )
+        return;
+
+    // loading
+
+    submitBtn.disabled =
         true;
-        
-        submitBtn.innerHTML=
+
+    submitBtn.innerHTML =
         `
         <div class="loader"></div>
         Submitting...
         `;
-        
-        const payload={
-        
+
+    const payload = {
+
         employee:
-        employee.value,
-        
+            employee.value,
+
         email:
-        email.value,
-        
+            email.value,
+
         department:
-        department.value,
-        
+            department.value,
+
         designation:
-        designation.value,
+            designation.value,
 
         reportingTo:
-reportingTo.value,
+            reportingTo.value,
 
-concerns:
-concerns.value,
+        concerns:
+            concerns.value,
 
-grooming:
-grooming.value,
-        
+        grooming:
+            grooming.value,
+
         works
-        
-        };
-        
-        let iframe=
-        
-        document.getElementById(
-        "hiddenFrame"
-        );
-        
-        if(!iframe){
-        
-        iframe=
-        
-        document.createElement(
-        "iframe"
-        );
-        
-        iframe.id=
-        "hiddenFrame";
-        
-        iframe.name=
-        "hiddenFrame";
-        
-        iframe.style.display=
-        "none";
-        
-        document.body
-        .appendChild(
-        iframe
-        
-        );
-        
-        }
-        
-        const form=
-        
-        document.createElement(
-        "form"
-        );
-        
-        form.method=
-        "POST";
-        
-        form.action=
-        "https://script.google.com/macros/s/AKfycbwnMyrlM8tXRMNvB1yUedFjOOJCSrJBo_GlD5zheZ2KkwrlQ9LNWpro9xwwQ1gPOFIFkg/exec";
-        
-        form.target=
-        "hiddenFrame";
-        
-        const hidden=
-        
-        document.createElement(
-        "input"
-        );
-        
-        hidden.type=
-        "hidden";
-        
-        hidden.name=
-        "data";
-        
-        hidden.value=
-        JSON.stringify(
-        payload
-        );
-        
-        form.appendChild(
-        hidden
-        
-        );
-        
-        document.body
-        .appendChild(
-        form
-        
-        );
-        
-        form.submit();
-        
-        setTimeout(()=>{
 
-            document.querySelector(
+    };
+
+    let iframe =
+
+        document.getElementById(
+            "hiddenFrame"
+        );
+
+    if (!iframe) {
+
+        iframe =
+
+            document.createElement(
+                "iframe"
+            );
+
+        iframe.id =
+            "hiddenFrame";
+
+        iframe.name =
+            "hiddenFrame";
+
+        iframe.style.display =
+            "none";
+
+        document.body
+            .appendChild(
+                iframe
+
+            );
+
+    }
+
+    const form =
+
+        document.createElement(
+            "form"
+        );
+
+    form.method =
+        "POST";
+
+    form.action =
+        "https://script.google.com/macros/s/AKfycbwnMyrlM8tXRMNvB1yUedFjOOJCSrJBo_GlD5zheZ2KkwrlQ9LNWpro9xwwQ1gPOFIFkg/exec";
+
+    form.target =
+        "hiddenFrame";
+
+    const hidden =
+
+        document.createElement(
+            "input"
+        );
+
+    hidden.type =
+        "hidden";
+
+    hidden.name =
+        "data";
+
+    hidden.value =
+        JSON.stringify(
+            payload
+        );
+
+    form.appendChild(
+        hidden
+
+    );
+
+    document.body
+        .appendChild(
+            form
+
+        );
+
+    form.submit();
+
+    setTimeout(() => {
+
+        document.querySelector(
             ".container"
-            ).innerHTML=
-            
+        ).innerHTML =
+
             `
             
             <div class="successScreen">
@@ -693,167 +693,166 @@ grooming.value,
             </div>
             
             `;
-            
-            window.scrollTo({
-            
-            top:0,
-            
-            behavior:"smooth"
-            
-            });
-            
-            },2000);
-        
-        }
-    
-    function showError(
-    
+
+        window.scrollTo({
+
+            top: 0,
+
+            behavior: "smooth"
+
+        });
+
+    }, 2000);
+
+}
+
+function showError(
+
     field,
-    
+
     message
-    
-    ){
-    
+
+) {
+
     field.classList.add(
-    "error"
+        "error"
     );
-    
-    const msg=
-    document.createElement(
-    "div"
-    );
-    
-    msg.className=
-    "errorText";
-    
-    msg.innerText=
-    message;
-    
+
+    const msg =
+        document.createElement(
+            "div"
+        );
+
+    msg.className =
+        "errorText";
+
+    msg.innerText =
+        message;
+
     field.after(
-    msg
+        msg
     );
-    
-    }
-    
-    function showScoreError(
-    
+
+}
+
+function showScoreError(
+
     work
-    
-    ){
-    
-    const msg=
-    document.createElement(
-    "div"
-    );
-    
-    msg.className=
-    "scoreError";
-    
-    msg.innerText=
-    "Select contribution score";
-    
+
+) {
+
+    const msg =
+        document.createElement(
+            "div"
+        );
+
+    msg.className =
+        "scoreError";
+
+    msg.innerText =
+        "Select contribution score";
+
     work
-    .querySelector(
-    ".scoreGroup"
-    )
-    .after(
-    msg
-    );
-    
-    }
-    
-    function clearErrors(){
-    
+        .querySelector(
+            ".scoreGroup"
+        )
+        .after(
+            msg
+        );
+
+}
+
+function clearErrors() {
+
     document
-    .querySelectorAll(
-    ".error"
-    )
-    .forEach(
-    x=>
-    x.classList.remove(
-    "error"
-    )
-    );
-    
+        .querySelectorAll(
+            ".error"
+        )
+        .forEach(
+            x =>
+                x.classList.remove(
+                    "error"
+                )
+        );
+
     document
-    .querySelectorAll(
-    ".errorText,.scoreError"
-    )
-    .forEach(
-    x=>
-    x.remove()
-    );
-    
-    }
-    
-    function liveValidation(
-    
+        .querySelectorAll(
+            ".errorText,.scoreError"
+        )
+        .forEach(
+            x =>
+                x.remove()
+        );
+
+}
+
+function liveValidation(
+
     field
-    
-    ){
-    
+
+) {
+
     field.addEventListener(
-    
-    "input",
-    
-    ()=>{
-    
-    field
-    .classList.remove(
-    "error"
+
+        "input",
+
+        () => {
+
+            field
+                .classList.remove(
+                    "error"
+                );
+
+            field
+                .nextElementSibling
+                ?.remove();
+
+        },
+
+        {
+
+            once: true
+
+        }
+
     );
-    
-    field
-    .nextElementSibling
-    ?.remove();
-    
-    },
-    
-    {
-    
-    once:true
-    
-    }
-    
-    );
-    
-    }
-    
-    function liveScoreValidation(
-    
+
+}
+
+function liveScoreValidation(
+
     work
-    
-    ){
-    
+
+) {
+
     work
-    .querySelectorAll(
-    'input[type="radio"]'
-    )
-    .forEach(r=>{
-    
-    r.addEventListener(
-    
-    "change",
-    
-    ()=>{
-    
-    work
-    .querySelector(
-    ".scoreError"
-    )
-    ?.remove();
-    
-    },
-    
-    {
-    
-    once:true
-    
-    }
-    
-    );
-    
-    });
-    
-    }
-    
+        .querySelectorAll(
+            'input[type="radio"]'
+        )
+        .forEach(r => {
+
+            r.addEventListener(
+
+                "change",
+
+                () => {
+
+                    work
+                        .querySelector(
+                            ".scoreError"
+                        )
+                        ?.remove();
+
+                },
+
+                {
+
+                    once: true
+
+                }
+
+            );
+
+        });
+
+}
