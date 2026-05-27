@@ -3,216 +3,184 @@
 
 <head>
 
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
 
-<meta
-name="viewport"
-content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
 
-<title>KRA Employee Form</title>
+    <title>KRA Employee Form</title>
 
-<link
-rel="stylesheet"
-href="styles.css">
+    <link rel="stylesheet" href="styles.css">
 
 </head>
 
 <body>
 
     <div class="container">
-    
-    <div class="header">
-    
-    <h1>KRA Employee Form</h1>
-    
-    <p>
-    Complete department work details
-    </p>
-    
-    </div>
-    
-    <div class="grid">
-    
-    <div class="field employee">
-    
-    <label>
-    Employee Name
-    </label>
-    
-    <input
-    id="employee"
-    placeholder="Enter employee name">
-    
-    </div>
-    
-    <div class="field">
-    
-    <label>
-    Department
-    </label>
-    
-    <select
-    id="department">
-    
-    <option value="">
-    Select Department
-    </option>
-    
-    </select>
-    
-    </div>
-    
-    <div class="field">
-    
-    <label>
-    Company Email
-    </label>
-    
-    <input
-    id="email"
-    type="email"
-    placeholder="Enter company email">
-    
-    </div>
-    
-    <div class="field">
-    
-    <label>
-    Designation
-    </label>
-    
-    <input
-    id="designation"
-    placeholder="Enter designation">
-    
-    </div>
-    
-    </div>
-    
-    <div class="actions">
-    
-    <button
-    id="nextBtn"
-    onclick="showQuestions()">
-    
-    Next →
-    
-    </button>
-    
-    </div>
-    
-    <div
-    id="questionSection"
-    
-    style="display:none;">
-    
-    <h2>
-    
-    Work Details
-    
-    </h2>
-    
-    <div id="works">
-    
-    </div>
-    
-    </div>
-    
-    <div
-id="employeeFeedback"
 
-style="display:none;">
+        <div class="header">
 
-<h2>
+            <h1>KRA Employee Form</h1>
 
-Additional Details
+            <p>
+                Complete department work details
+            </p>
 
-</h2>
+        </div>
 
-<div class="feedbackCard">
+        <div class="grid">
 
-<label>
-Reporting To
-</label>
+            <div class="field employee">
 
-<input
-id="reportingTo"
+                <label>
+                    Employee Name
+                </label>
 
-placeholder="">
+                <input id="employee" placeholder="Enter employee name">
 
-<label>
+            </div>
 
-Do you have any concerns, suggestions, or need any assistance related to your work?
+            <div class="field">
 
-</label>
+                <label>
+                    Department
+                </label>
 
-<textarea
-id="concerns"
+                <select id="department">
 
-placeholder="Write concerns, suggestions or type NA">
+                    <option value="">
+                        Select Department
+                    </option>
+
+                </select>
+
+            </div>
+
+            <div class="field">
+
+                <label>
+                    Company Email
+                </label>
+
+                <input id="email" type="email" placeholder="Enter company email">
+
+            </div>
+
+            <div class="field">
+
+                <label>
+                    Designation
+                </label>
+
+                <input id="designation" placeholder="Enter designation">
+
+            </div>
+
+        </div>
+
+        <div class="actions">
+
+            <button id="nextBtn" onclick="showQuestions()">
+
+                Next →
+
+            </button>
+
+        </div>
+
+        <div id="questionSection" style="display:none;">
+
+            <h2>
+
+                Work Details
+
+            </h2>
+
+            <div id="works">
+
+            </div>
+
+        </div>
+
+        <div id="employeeFeedback" style="display:none;">
+
+            <h2>
+
+                Additional Details
+
+            </h2>
+
+            <div class="feedbackCard">
+
+                <label>
+                    Reporting To
+                </label>
+
+                <input id="reportingTo" placeholder="">
+
+                <label>
+
+                    Do you have any concerns, suggestions, or need any assistance related to your work?
+
+                </label>
+
+                <textarea id="concerns" placeholder="Write concerns, suggestions or type NA">
 </textarea>
 
-<label>
+                <label>
 
-Do you come to the office in accordance with the company’s grooming and professional appearance standards?
+                    Do you come to the office in accordance with the company’s grooming and professional appearance
+                    standards?
 
-</label>
+                </label>
 
-<select
-id="grooming">
+                <select id="grooming">
 
-<option value="">
-Select
-</option>
+                    <option value="">
+                        Select
+                    </option>
 
-<option>
-A. Consistently maintain professional appearance
-</option>
+                    <option>
+                        A. Consistently maintain professional appearance
+                    </option>
 
-<option>
-B. Follow standards but sometimes improvement needed
-</option>
+                    <option>
+                        B. Follow standards but sometimes improvement needed
+                    </option>
 
-<option>
-C. Dress appropriately but grooming inconsistent
-</option>
+                    <option>
+                        C. Dress appropriately but grooming inconsistent
+                    </option>
 
-<option>
-D. Grooming maintained but dress code inconsistent
-</option>
+                    <option>
+                        D. Grooming maintained but dress code inconsistent
+                    </option>
 
-<option>
-E. Aware and improving compliance
-</option>
+                    <option>
+                        E. Aware and improving compliance
+                    </option>
 
-<option>
-F. Not fully aware of expectations
-</option>
+                    <option>
+                        F. Not fully aware of expectations
+                    </option>
 
-</select>
+                </select>
 
-</div>
+            </div>
 
-</div>
+        </div>
 
-    <button
-    id="submitBtn"
-    
-    style="display:none"
-    
-    onclick="submitForm()">
-    
-    Submit KRA
-    
-    </button>
-    
+        <button id="submitBtn" style="display:none" onclick="submitForm()">
+
+            Submit KRA
+
+        </button>
+
     </div>
-    
-    <script
-    src="script.js">
-    
+
+    <script src="script.js">
+
     </script>
-    
-    </body>
+
+</body>
 
 </html>
