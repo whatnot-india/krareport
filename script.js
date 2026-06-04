@@ -45,11 +45,16 @@ ${dep}
 }
 
 function showQuestions() {
+    document.getElementById(
+"reportingTo"
+);
+
 
     if (
         !employee.value
         ||
-
+        !company.value
+        ||
         !email.value
         ||
 
@@ -57,6 +62,8 @@ function showQuestions() {
         ||
 
         !department.value
+        ||
+        !reportingTo.value.trim()
     ) {
 
         alert(
@@ -390,11 +397,6 @@ function submitForm() {
 
     /* Additional Details Validation */
 
-    const reporting =
-
-        document.getElementById(
-            "reportingTo"
-        );
 
     const concerns =
 
@@ -409,26 +411,6 @@ function submitForm() {
         );
 
     let extraError = false;
-
-    if (
-        !reporting.value.trim()
-    ) {
-
-        showError(
-
-            reporting,
-
-            "Please mention reporting manager"
-
-        );
-
-        liveValidation(
-            reporting
-        );
-
-        extraError = true;
-
-    }
 
     if (
         !concerns.value.trim()
@@ -553,6 +535,8 @@ function submitToSheet(works) {
 
         employee:
             employee.value,
+        company:
+company.value,  
 
         email:
             email.value,
