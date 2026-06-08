@@ -155,7 +155,7 @@ ${work}
 
 <label>
 
-Explain Work
+Explain
 
 </label>
 
