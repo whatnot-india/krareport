@@ -135,13 +135,21 @@ function loadQuestions() {
 
 <label>
 
+${department.value === "Sales"
+? `
 <input
 type="checkbox"
-
-onchange=
-"toggle(this)"
-
+checked
+disabled
 >
+`
+: `
+<input
+type="checkbox"
+onchange="toggle(this)"
+>
+`
+}
 
 <b>
 
@@ -151,7 +159,10 @@ ${work}
 
 </label>
 
-<div class="hidden">
+<div class="hidden"
+style="${department.value === 'Sales'
+? 'display:block'
+: ''}">
 
 <label>
 
@@ -161,35 +172,21 @@ Explain
 
 <textarea></textarea>
 
+${department.value !== "Sales" ? `
+
 <label>
-
 Time Spent
-
 </label>
 
 <select>
-
-<option>
-Less than 1 Hour
-</option>
-
-<option>
-1–2 Hours
-</option>
-
-<option>
-2–4 Hours
-</option>
-
-<option>
-4–6 Hours
-</option>
-
-<option>
-More than 6 Hours
-</option>
-
+    <option>Less than 1 Hour</option>
+    <option>1–2 Hours</option>
+    <option>2–4 Hours</option>
+    <option>4–6 Hours</option>
+    <option>More than 6 Hours</option>
 </select>
+
+` : ""}
 
 <label>
 
@@ -311,8 +308,12 @@ function submitForm() {
                     'input[type="checkbox"]'
                 );
 
-            if (!checked.checked)
-                return;
+            
+            if (
+    department.value !== "Sales" &&
+    !checked.checked
+)
+    return;
 
             const explain =
                 w.querySelector(
@@ -320,9 +321,9 @@ function submitForm() {
                 );
 
             const time =
-                w.querySelector(
-                    "select"
-                );
+    department.value === "Sales"
+        ? null
+        : w.querySelector("select");
 
             const score =
                 w.querySelector(
@@ -377,21 +378,12 @@ function submitForm() {
 
             }
 
-            works.push({
-
-                name:
-                    workName,
-
-                explain:
-                    explain.value.trim(),
-
-                time:
-                    time.value,
-
-                score:
-                    score.value
-
-            });
+           works.push({
+    name: workName,
+    explain: explain.value.trim(),
+    time: time ? time.value : "",
+    score: score.value
+});
 
         });
 
@@ -840,3 +832,51 @@ function liveScoreValidation(
         });
 
 }
+
+
+function startCountdown(){
+
+    const deadline =
+        new Date("2026-06-20T23:59:59");
+
+    function update(){
+
+        const diff =
+            deadline - new Date();
+
+        if(diff <= 0){
+
+            document.getElementById(
+                "countdownMini"
+            ).innerText =
+                "Closed";
+
+            return;
+        }
+
+        const days =
+            Math.floor(
+                diff /
+                (1000*60*60*24)
+            );
+
+        const hours =
+            Math.floor(
+                (diff %
+                (1000*60*60*24))
+                /
+                (1000*60*60)
+            );
+
+        document.getElementById(
+            "countdownMini"
+        ).innerText =
+            `${days}D ${hours}H Remaining`;
+    }
+
+    update();
+
+    setInterval(update,60000);
+}
+
+startCountdown();
