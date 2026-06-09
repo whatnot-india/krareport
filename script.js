@@ -622,7 +622,7 @@ company.value,
         "POST";
 
     form.action =
-        "https://script.google.com/a/macros/whatnot.in/s/AKfycbyPHv4n43i1waBWWT3G8SNLh1sxAPCdX9nMebCI76plVSMy-kEIMZq7zJyAHq2_KXQy/exec";
+        "https://script.google.com/macros/s/AKfycbwnMyrlM8tXRMNvB1yUedFjOOJCSrJBo_GlD5zheZ2KkwrlQ9LNWpro9xwwQ1gPOFIFkg/exec";
 
     form.target =
         "hiddenFrame";
