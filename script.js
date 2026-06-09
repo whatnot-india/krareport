@@ -45,7 +45,8 @@ ${dep}
 }
 
 function showQuestions() {
-    document.getElementById(
+const reportingTo =
+document.getElementById(
 "reportingTo"
 );
 
@@ -265,6 +266,7 @@ value="5">
 `;
 
     });
+   
 
 }
 
@@ -298,22 +300,30 @@ function submitForm() {
     let works = [];
 
     let hasError = false;
+    const workError =
+document.getElementById(
+"workError"
+);
+
+workError.style.display =
+"none";
+
 
     document
         .querySelectorAll(".work")
         .forEach(w => {
 
-            const checked =
-                w.querySelector(
-                    'input[type="checkbox"]'
-                );
+          const checked =
+w.querySelector(
+'input[type="checkbox"]'
+);
 
-            
-            if (
-    department.value !== "Sales" &&
-    !checked.checked
-)
-    return;
+if(
+department.value !== "Sales" &&
+!checked.checked
+){
+return;
+}
 
             const explain =
                 w.querySelector(
@@ -386,6 +396,25 @@ function submitForm() {
 });
 
         });
+        if(
+department.value !== "Sales" &&
+works.length === 0
+){
+
+workError.innerText =
+"Please select at least one work detail.";
+
+workError.style.display =
+"block";
+
+workError.scrollIntoView({
+behavior:"smooth",
+block:"center"
+});
+
+return;
+
+}
 
     /* Additional Details Validation */
 
@@ -593,7 +622,7 @@ company.value,
         "POST";
 
     form.action =
-        "https://script.google.com/macros/s/AKfycbwnMyrlM8tXRMNvB1yUedFjOOJCSrJBo_GlD5zheZ2KkwrlQ9LNWpro9xwwQ1gPOFIFkg/exec";
+        "https://script.google.com/a/macros/whatnot.in/s/AKfycbyPHv4n43i1waBWWT3G8SNLh1sxAPCdX9nMebCI76plVSMy-kEIMZq7zJyAHq2_KXQy/exec";
 
     form.target =
         "hiddenFrame";
