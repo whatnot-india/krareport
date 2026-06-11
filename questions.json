@@ -9,7 +9,7 @@
         "Customer Service Department",
         "Sales",
         "Procurement Management",
-        "Others"
+        "Warehouse Management"
     ],
     "questions": {
         "MIS": [
@@ -199,6 +199,33 @@
             "Courier Coordination",
             "HR Coordination",
             "Tally Support"
+        ],
+        "Warehouse Management": [
+            "Warehouse Activity Record Maintenance",
+            "Warehouse Inward & Outward Sheet Maintenance",
+            "Stock Inward Processing",
+            "Stock Outward Processing",
+            "Stock Verification Before Dispatch",
+            "Courier Pickup Follow-up",
+            "E-Way Bill Generation",
+            "Serial Number Scanning Before Dispatch",
+            "Stock Packing As Per Appointment Schedule",
+            "Brand-wise Stock Audit",
+            "QC Return Stock Management",
+            "Damage Stock Documentation (Photos & Videos)",
+            "Warehouse File & Record Management",
+            "Online Team Operations Management",
+            "DO Handling & Management",
+            "Online Team Inward Verification",
+            "Online Team Outward Verification",
+            "Warehouse Reporting & MIS Preparation",
+            "Task Allocation To Warehouse Staff",
+            "Warehouse Team Supervision",
+            "Katedan Warehouse Operations Management",
+            "Dispatch Planning & Coordination",
+            "Inventory Accuracy Management",
+            "Stock Reconciliation",
+            "Warehouse Compliance & Process Monitoring"
         ]
     }
 }
