@@ -120,6 +120,13 @@
             "Complaint Ticket Raising",
             "Product Support"
         ],
+        "Online": [
+            "What actions should be taken if a returned order is found to have the product missing?",
+            "How many marketplaces are we currently operating in?",
+            "What is the SLA (in days) to raise an SPF claim to Cred?",
+            "Where are Amazon and Flipkart orders processed?",
+            "Are RTO and cancelled orders moved to sellable inventory, or classified as customer-damaged stock?"
+        ],
         "Logistics": [
             "POD Follow-up",
             "Invoice Checking",
