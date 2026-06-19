@@ -104,7 +104,7 @@
             "Which products or markets should be prioritized next year?",
             "What is your YoY sales growth target for the upcoming year?"
         ],
-        "Customer Service Department": [
+        "Customer Service": [
             "Customer Support",
             "Complaint Resolution",
             "Ticket Handling",
@@ -148,7 +148,7 @@
             "Team Coordination",
             "Logistics Coordination"
         ],
-        "Software Department": [
+        "Software": [
             "Website Development",
             "Frontend Development",
             "Backend Development",
@@ -189,7 +189,7 @@
             "Inventory Planning",
             "Listing Management"
         ],
-        "Human Resources Department": [
+        "Human Resources": [
             "Recruitment",
             "Job Posting",
             "Interview Scheduling",
